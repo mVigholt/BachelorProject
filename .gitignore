@@ -1,6 +1,7 @@
 # User defined:  
 /data/original/
 /data/split/
+/data/zip/
 /log/
 /log_tensorboard/
 /saved/

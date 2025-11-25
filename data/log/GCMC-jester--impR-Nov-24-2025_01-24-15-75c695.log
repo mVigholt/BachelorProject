@@ -1,0 +1,220 @@
+Mon 24 Nov 2025 01:24:15 INFO  ['c:\\Users\\martin\\miniconda3\\envs\\bp\\Lib\\site-packages\\ipykernel_launcher.py', '--f=c:\\Users\\martin\\AppData\\Roaming\\jupyter\\runtime\\kernel-v32f0c8af27dd32a29560243206e925ab5595f67ed.json']
+Mon 24 Nov 2025 01:24:15 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = ./data/split/jester\jester--impR
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 50
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 5
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0, 0, 0]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Precision', 'Recall', 'MRR', 'Hit', 'NDCG']
+topk = [10, 20]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = ['train', 'valid', 'test']
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+accum = stack
+gcn_output_dim = 500
+embedding_size = 64
+dropout_prob = 0.3
+sparse_feature = True
+class_num = 2
+num_basis_functions = 2
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+test_args = {'mode': 'full'}
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Mon 24 Nov 2025 01:24:15 INFO  Load filtered dataset from: [saved\jester--impR-Dataset.pth]
+Mon 24 Nov 2025 01:24:15 INFO  jester--impR
+The number of users: 50098
+Average actions of users: 20.228696329121505
+The number of items: 101
+Average actions of items: 10133.97
+The number of inters: 1013397
+The sparsity of the dataset: 79.9719875776152%
+Remain Fields: ['user_id', 'item_id']
+Mon 24 Nov 2025 01:24:18 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Mon 24 Nov 2025 01:24:18 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0, 0, 0]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 24 Nov 2025 01:24:20 INFO  GCMC(
+  (GcEncoder): GcEncoder(
+    (dropout): Dropout(p=0.3, inplace=False)
+    (sparse_dropout): SparseDropout()
+    (activate): ReLU()
+    (weights_u): ParameterList(  (0): Parameter containing: [torch.float32 of size 50199x500])
+    (weights_v): ParameterList(  (0): Parameter containing: [torch.float32 of size 50199x500])
+    (dense_layer_u): Linear(in_features=500, out_features=64, bias=False)
+    (dense_layer_v): Linear(in_features=500, out_features=64, bias=False)
+  )
+  (BiDecoder): BiDecoder(
+    (dropout): Dropout(p=0.0, inplace=False)
+    (weights): ParameterList(
+        (0): Parameter containing: [torch.float32 of size 64x64]
+        (1): Parameter containing: [torch.float32 of size 64x64]
+    )
+    (dense_layer): Linear(in_features=2, out_features=2, bias=False)
+  )
+  (loss_function): CrossEntropyLoss()
+)
+Trainable parameters: 25139696
+Mon 24 Nov 2025 01:24:21 INFO  FLOPs: 1606368004.0
+Mon 24 Nov 2025 01:43:59 INFO  epoch 0 training [time: 1175.90s, train loss: 259.9359]
+Mon 24 Nov 2025 02:06:34 INFO  epoch 0 evaluating [time: 1355.05s, valid_score: 0.247600]
+Mon 24 Nov 2025 02:06:34 INFO  valid result: 
+precision@10 : 0.0479    precision@20 : 0.0339    recall@10 : 0.4786    recall@20 : 0.6776    mrr@10 : 0.1777    mrr@20 : 0.1916    hit@10 : 0.4786    hit@20 : 0.6776    ndcg@10 : 0.2476    ndcg@20 : 0.298
+Mon 24 Nov 2025 02:06:35 INFO  Saving current: saved\GCMC-Nov-24-2025_01-24-21.pth
+Mon 24 Nov 2025 02:26:18 INFO  epoch 1 training [time: 1183.73s, train loss: 239.0223]
+Mon 24 Nov 2025 02:49:05 INFO  epoch 1 evaluating [time: 1366.29s, valid_score: 0.261100]
+Mon 24 Nov 2025 02:49:05 INFO  valid result: 
+precision@10 : 0.0502    precision@20 : 0.0352    recall@10 : 0.5022    recall@20 : 0.7048    mrr@10 : 0.1883    mrr@20 : 0.2024    hit@10 : 0.5022    hit@20 : 0.7048    ndcg@10 : 0.2611    ndcg@20 : 0.3125
+Mon 24 Nov 2025 02:49:05 INFO  Saving current: saved\GCMC-Nov-24-2025_01-24-21.pth
+Mon 24 Nov 2025 03:08:50 INFO  epoch 2 training [time: 1185.19s, train loss: 232.0442]
+Mon 24 Nov 2025 03:31:38 INFO  epoch 2 evaluating [time: 1368.12s, valid_score: 0.259300]
+Mon 24 Nov 2025 03:31:38 INFO  valid result: 
+precision@10 : 0.0501    precision@20 : 0.0352    recall@10 : 0.5012    recall@20 : 0.7045    mrr@10 : 0.1862    mrr@20 : 0.2004    hit@10 : 0.5012    hit@20 : 0.7045    ndcg@10 : 0.2593    ndcg@20 : 0.3109
+Mon 24 Nov 2025 03:51:32 INFO  epoch 3 training [time: 1193.84s, train loss: 230.3316]
+Mon 24 Nov 2025 04:14:25 INFO  epoch 3 evaluating [time: 1373.23s, valid_score: 0.266300]
+Mon 24 Nov 2025 04:14:25 INFO  valid result: 
+precision@10 : 0.051    precision@20 : 0.0355    recall@10 : 0.5102    recall@20 : 0.7098    mrr@10 : 0.1925    mrr@20 : 0.2065    hit@10 : 0.5102    hit@20 : 0.7098    ndcg@10 : 0.2663    ndcg@20 : 0.3169
+Mon 24 Nov 2025 04:14:26 INFO  Saving current: saved\GCMC-Nov-24-2025_01-24-21.pth
+Mon 24 Nov 2025 04:34:15 INFO  epoch 4 training [time: 1189.06s, train loss: 227.3550]
+Mon 24 Nov 2025 04:57:12 INFO  epoch 4 evaluating [time: 1377.42s, valid_score: 0.269200]
+Mon 24 Nov 2025 04:57:12 INFO  valid result: 
+precision@10 : 0.0516    precision@20 : 0.0359    recall@10 : 0.5156    recall@20 : 0.7175    mrr@10 : 0.1945    mrr@20 : 0.2086    hit@10 : 0.5156    hit@20 : 0.7175    ndcg@10 : 0.2692    ndcg@20 : 0.3203
+Mon 24 Nov 2025 04:57:13 INFO  Saving current: saved\GCMC-Nov-24-2025_01-24-21.pth
+Mon 24 Nov 2025 05:17:04 INFO  epoch 5 training [time: 1190.90s, train loss: 225.6983]
+Mon 24 Nov 2025 05:40:01 INFO  epoch 5 evaluating [time: 1377.26s, valid_score: 0.271600]
+Mon 24 Nov 2025 05:40:01 INFO  valid result: 
+precision@10 : 0.0518    precision@20 : 0.036    recall@10 : 0.5182    recall@20 : 0.7193    mrr@10 : 0.1969    mrr@20 : 0.2109    hit@10 : 0.5182    hit@20 : 0.7193    ndcg@10 : 0.2716    ndcg@20 : 0.3226
+Mon 24 Nov 2025 05:40:01 INFO  Saving current: saved\GCMC-Nov-24-2025_01-24-21.pth
+Mon 24 Nov 2025 05:59:54 INFO  epoch 6 training [time: 1192.30s, train loss: 221.9196]
+Mon 24 Nov 2025 06:22:52 INFO  epoch 6 evaluating [time: 1377.99s, valid_score: 0.277400]
+Mon 24 Nov 2025 06:22:52 INFO  valid result: 
+precision@10 : 0.0524    precision@20 : 0.0361    recall@10 : 0.5243    recall@20 : 0.723    mrr@10 : 0.2024    mrr@20 : 0.2163    hit@10 : 0.5243    hit@20 : 0.723    ndcg@10 : 0.2774    ndcg@20 : 0.3277
+Mon 24 Nov 2025 06:22:52 INFO  Saving current: saved\GCMC-Nov-24-2025_01-24-21.pth
+Mon 24 Nov 2025 06:42:44 INFO  epoch 7 training [time: 1191.77s, train loss: 220.4775]
+Mon 24 Nov 2025 07:05:37 INFO  epoch 7 evaluating [time: 1372.62s, valid_score: 0.274400]
+Mon 24 Nov 2025 07:05:37 INFO  valid result: 
+precision@10 : 0.0523    precision@20 : 0.0362    recall@10 : 0.5232    recall@20 : 0.7239    mrr@10 : 0.1989    mrr@20 : 0.2129    hit@10 : 0.5232    hit@20 : 0.7239    ndcg@10 : 0.2744    ndcg@20 : 0.3252
+Mon 24 Nov 2025 07:25:30 INFO  epoch 8 training [time: 1193.86s, train loss: 220.1989]
+Mon 24 Nov 2025 07:48:25 INFO  epoch 8 evaluating [time: 1374.55s, valid_score: 0.275400]
+Mon 24 Nov 2025 07:48:25 INFO  valid result: 
+precision@10 : 0.0524    precision@20 : 0.0362    recall@10 : 0.5243    recall@20 : 0.7236    mrr@10 : 0.2    mrr@20 : 0.2139    hit@10 : 0.5243    hit@20 : 0.7236    ndcg@10 : 0.2754    ndcg@20 : 0.3259
+Mon 24 Nov 2025 08:08:21 INFO  epoch 9 training [time: 1195.66s, train loss: 218.9416]
+Mon 24 Nov 2025 08:31:11 INFO  epoch 9 evaluating [time: 1370.50s, valid_score: 0.272000]
+Mon 24 Nov 2025 08:31:11 INFO  valid result: 
+precision@10 : 0.0519    precision@20 : 0.036    recall@10 : 0.5193    recall@20 : 0.7209    mrr@10 : 0.1972    mrr@20 : 0.2112    hit@10 : 0.5193    hit@20 : 0.7209    ndcg@10 : 0.272    ndcg@20 : 0.3231
+Mon 24 Nov 2025 08:51:10 INFO  epoch 10 training [time: 1198.49s, train loss: 217.0169]
+Mon 24 Nov 2025 09:14:01 INFO  epoch 10 evaluating [time: 1371.19s, valid_score: 0.277300]
+Mon 24 Nov 2025 09:14:01 INFO  valid result: 
+precision@10 : 0.0525    precision@20 : 0.0363    recall@10 : 0.5255    recall@20 : 0.7259    mrr@10 : 0.202    mrr@20 : 0.2159    hit@10 : 0.5255    hit@20 : 0.7259    ndcg@10 : 0.2773    ndcg@20 : 0.328
+Mon 24 Nov 2025 09:34:07 INFO  epoch 11 training [time: 1206.33s, train loss: 215.9110]
+Mon 24 Nov 2025 09:57:23 INFO  epoch 11 evaluating [time: 1395.62s, valid_score: 0.282200]
+Mon 24 Nov 2025 09:57:23 INFO  valid result: 
+precision@10 : 0.0531    precision@20 : 0.0364    recall@10 : 0.5314    recall@20 : 0.7282    mrr@10 : 0.2066    mrr@20 : 0.2203    hit@10 : 0.5314    hit@20 : 0.7282    ndcg@10 : 0.2822    ndcg@20 : 0.3321
+Mon 24 Nov 2025 09:57:23 INFO  Saving current: saved\GCMC-Nov-24-2025_01-24-21.pth
+Mon 24 Nov 2025 10:18:19 INFO  epoch 12 training [time: 1256.00s, train loss: 214.3792]
+Mon 24 Nov 2025 10:42:49 INFO  epoch 12 evaluating [time: 1469.37s, valid_score: 0.278300]
+Mon 24 Nov 2025 10:42:49 INFO  valid result: 
+precision@10 : 0.0526    precision@20 : 0.0363    recall@10 : 0.5261    recall@20 : 0.7257    mrr@10 : 0.203    mrr@20 : 0.217    hit@10 : 0.5261    hit@20 : 0.7257    ndcg@10 : 0.2783    ndcg@20 : 0.3288
+Mon 24 Nov 2025 11:04:19 INFO  epoch 13 training [time: 1290.57s, train loss: 213.5125]
+Mon 24 Nov 2025 11:29:18 INFO  epoch 13 evaluating [time: 1499.08s, valid_score: 0.279600]
+Mon 24 Nov 2025 11:29:18 INFO  valid result: 
+precision@10 : 0.0528    precision@20 : 0.0363    recall@10 : 0.528    recall@20 : 0.726    mrr@10 : 0.2043    mrr@20 : 0.2181    hit@10 : 0.528    hit@20 : 0.726    ndcg@10 : 0.2796    ndcg@20 : 0.3298
+Mon 24 Nov 2025 11:49:44 INFO  epoch 14 training [time: 1225.16s, train loss: 212.4392]
+Mon 24 Nov 2025 12:12:58 INFO  epoch 14 evaluating [time: 1394.30s, valid_score: 0.277400]
+Mon 24 Nov 2025 12:12:58 INFO  valid result: 
+precision@10 : 0.0525    precision@20 : 0.0362    recall@10 : 0.5253    recall@20 : 0.7245    mrr@10 : 0.2022    mrr@20 : 0.216    hit@10 : 0.5253    hit@20 : 0.7245    ndcg@10 : 0.2774    ndcg@20 : 0.3278
+Mon 24 Nov 2025 12:33:02 INFO  epoch 15 training [time: 1204.53s, train loss: 211.2796]
+Mon 24 Nov 2025 12:56:51 INFO  epoch 15 evaluating [time: 1428.85s, valid_score: 0.277400]
+Mon 24 Nov 2025 12:56:51 INFO  valid result: 
+precision@10 : 0.0526    precision@20 : 0.0363    recall@10 : 0.5257    recall@20 : 0.7263    mrr@10 : 0.202    mrr@20 : 0.216    hit@10 : 0.5257    hit@20 : 0.7263    ndcg@10 : 0.2774    ndcg@20 : 0.3281
+Mon 24 Nov 2025 13:17:23 INFO  epoch 16 training [time: 1231.72s, train loss: 210.8165]
+Mon 24 Nov 2025 13:41:18 INFO  epoch 16 evaluating [time: 1435.29s, valid_score: 0.279900]
+Mon 24 Nov 2025 13:41:18 INFO  valid result: 
+precision@10 : 0.0528    precision@20 : 0.0365    recall@10 : 0.5284    recall@20 : 0.729    mrr@10 : 0.2044    mrr@20 : 0.2184    hit@10 : 0.5284    hit@20 : 0.729    ndcg@10 : 0.2799    ndcg@20 : 0.3307
+Mon 24 Nov 2025 14:01:44 INFO  epoch 17 training [time: 1225.51s, train loss: 209.8487]
+Mon 24 Nov 2025 14:27:02 INFO  epoch 17 evaluating [time: 1518.58s, valid_score: 0.278500]
+Mon 24 Nov 2025 14:27:02 INFO  valid result: 
+precision@10 : 0.0527    precision@20 : 0.0362    recall@10 : 0.5273    recall@20 : 0.7246    mrr@10 : 0.203    mrr@20 : 0.2168    hit@10 : 0.5273    hit@20 : 0.7246    ndcg@10 : 0.2785    ndcg@20 : 0.3285
+Mon 24 Nov 2025 14:27:02 INFO  Finished training, best eval result in epoch 11

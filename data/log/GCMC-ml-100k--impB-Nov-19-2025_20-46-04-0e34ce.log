@@ -1,0 +1,201 @@
+Wed 19 Nov 2025 20:46:04 INFO  ['c:\\Users\\martin\\miniconda3\\envs\\bp\\Lib\\site-packages\\ipykernel_launcher.py', '--f=c:\\Users\\martin\\AppData\\Roaming\\jupyter\\runtime\\kernel-v3607b4dd9d261d82907e92cebd715f769277b7a36.json']
+Wed 19 Nov 2025 20:46:04 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = ./data/split/ml-100k\ml-100k--impB
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 50
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 5
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0, 0, 0]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Precision', 'Recall', 'MRR', 'Hit', 'NDCG']
+topk = [10, 20]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = ['train', 'valid', 'test']
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+accum = stack
+gcn_output_dim = 500
+embedding_size = 64
+dropout_prob = 0.3
+sparse_feature = True
+class_num = 2
+num_basis_functions = 2
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+test_args = {'mode': 'full'}
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Wed 19 Nov 2025 20:46:04 INFO  ml-100k--impB
+The number of users: 939
+Average actions of users: 59.02025586353945
+The number of items: 1448
+Average actions of items: 38.25915687629578
+The number of inters: 55361
+The sparsity of the dataset: 95.92835625062514%
+Remain Fields: ['user_id', 'item_id']
+Wed 19 Nov 2025 20:46:05 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Wed 19 Nov 2025 20:46:05 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0, 0, 0]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Wed 19 Nov 2025 20:46:05 INFO  GCMC(
+  (GcEncoder): GcEncoder(
+    (dropout): Dropout(p=0.3, inplace=False)
+    (sparse_dropout): SparseDropout()
+    (activate): ReLU()
+    (weights_u): ParameterList(  (0): Parameter containing: [torch.float32 of size 2387x500])
+    (weights_v): ParameterList(  (0): Parameter containing: [torch.float32 of size 2387x500])
+    (dense_layer_u): Linear(in_features=500, out_features=64, bias=False)
+    (dense_layer_v): Linear(in_features=500, out_features=64, bias=False)
+  )
+  (BiDecoder): BiDecoder(
+    (dropout): Dropout(p=0.0, inplace=False)
+    (weights): ParameterList(
+        (0): Parameter containing: [torch.float32 of size 64x64]
+        (1): Parameter containing: [torch.float32 of size 64x64]
+    )
+    (dense_layer): Linear(in_features=2, out_features=2, bias=False)
+  )
+  (loss_function): CrossEntropyLoss()
+)
+Trainable parameters: 1233696
+Wed 19 Nov 2025 20:46:05 INFO  FLOPs: 76384004.0
+Wed 19 Nov 2025 20:46:12 INFO  epoch 0 training [time: 6.88s, train loss: 17.9298]
+Wed 19 Nov 2025 20:47:02 INFO  epoch 0 evaluating [time: 50.02s, valid_score: 0.066500]
+Wed 19 Nov 2025 20:47:02 INFO  valid result: 
+precision@10 : 0.0119    precision@20 : 0.0095    recall@10 : 0.1194    recall@20 : 0.1908    mrr@10 : 0.0507    mrr@20 : 0.0553    hit@10 : 0.1194    hit@20 : 0.1908    ndcg@10 : 0.0665    ndcg@20 : 0.0841
+Wed 19 Nov 2025 20:47:02 INFO  Saving current: saved\GCMC-Nov-19-2025_20-46-05.pth
+Wed 19 Nov 2025 20:47:09 INFO  epoch 1 training [time: 6.59s, train loss: 15.4503]
+Wed 19 Nov 2025 20:47:58 INFO  epoch 1 evaluating [time: 49.40s, valid_score: 0.067500]
+Wed 19 Nov 2025 20:47:58 INFO  valid result: 
+precision@10 : 0.0123    precision@20 : 0.0096    recall@10 : 0.1226    recall@20 : 0.1919    mrr@10 : 0.0511    mrr@20 : 0.0559    hit@10 : 0.1226    hit@20 : 0.1919    ndcg@10 : 0.0675    ndcg@20 : 0.085
+Wed 19 Nov 2025 20:47:58 INFO  Saving current: saved\GCMC-Nov-19-2025_20-46-05.pth
+Wed 19 Nov 2025 20:48:05 INFO  epoch 2 training [time: 6.93s, train loss: 14.0850]
+Wed 19 Nov 2025 20:48:55 INFO  epoch 2 evaluating [time: 50.31s, valid_score: 0.064100]
+Wed 19 Nov 2025 20:48:55 INFO  valid result: 
+precision@10 : 0.0115    precision@20 : 0.0091    recall@10 : 0.1151    recall@20 : 0.1823    mrr@10 : 0.0487    mrr@20 : 0.0534    hit@10 : 0.1151    hit@20 : 0.1823    ndcg@10 : 0.0641    ndcg@20 : 0.0811
+Wed 19 Nov 2025 20:49:02 INFO  epoch 3 training [time: 6.80s, train loss: 13.4336]
+Wed 19 Nov 2025 20:49:52 INFO  epoch 3 evaluating [time: 50.18s, valid_score: 0.071200]
+Wed 19 Nov 2025 20:49:52 INFO  valid result: 
+precision@10 : 0.0129    precision@20 : 0.0103    recall@10 : 0.129    recall@20 : 0.2068    mrr@10 : 0.0539    mrr@20 : 0.0592    hit@10 : 0.129    hit@20 : 0.2068    ndcg@10 : 0.0712    ndcg@20 : 0.0908
+Wed 19 Nov 2025 20:49:52 INFO  Saving current: saved\GCMC-Nov-19-2025_20-46-05.pth
+Wed 19 Nov 2025 20:49:59 INFO  epoch 4 training [time: 6.74s, train loss: 13.0886]
+Wed 19 Nov 2025 20:50:47 INFO  epoch 4 evaluating [time: 47.97s, valid_score: 0.083700]
+Wed 19 Nov 2025 20:50:47 INFO  valid result: 
+precision@10 : 0.0156    precision@20 : 0.0119    recall@10 : 0.1557    recall@20 : 0.2388    mrr@10 : 0.0619    mrr@20 : 0.0677    hit@10 : 0.1557    hit@20 : 0.2388    ndcg@10 : 0.0837    ndcg@20 : 0.1048
+Wed 19 Nov 2025 20:50:47 INFO  Saving current: saved\GCMC-Nov-19-2025_20-46-05.pth
+Wed 19 Nov 2025 20:50:54 INFO  epoch 5 training [time: 7.21s, train loss: 12.6978]
+Wed 19 Nov 2025 20:51:41 INFO  epoch 5 evaluating [time: 47.02s, valid_score: 0.081800]
+Wed 19 Nov 2025 20:51:41 INFO  valid result: 
+precision@10 : 0.0152    precision@20 : 0.0124    recall@10 : 0.1525    recall@20 : 0.2484    mrr@10 : 0.0604    mrr@20 : 0.0667    hit@10 : 0.1525    hit@20 : 0.2484    ndcg@10 : 0.0818    ndcg@20 : 0.1056
+Wed 19 Nov 2025 20:51:48 INFO  epoch 6 training [time: 6.93s, train loss: 12.4162]
+Wed 19 Nov 2025 20:52:38 INFO  epoch 6 evaluating [time: 49.97s, valid_score: 0.080200]
+Wed 19 Nov 2025 20:52:38 INFO  valid result: 
+precision@10 : 0.0155    precision@20 : 0.0116    recall@10 : 0.1546    recall@20 : 0.2324    mrr@10 : 0.0578    mrr@20 : 0.0632    hit@10 : 0.1546    hit@20 : 0.2324    ndcg@10 : 0.0802    ndcg@20 : 0.0998
+Wed 19 Nov 2025 20:52:45 INFO  epoch 7 training [time: 6.59s, train loss: 12.0564]
+Wed 19 Nov 2025 20:53:31 INFO  epoch 7 evaluating [time: 45.59s, valid_score: 0.081800]
+Wed 19 Nov 2025 20:53:31 INFO  valid result: 
+precision@10 : 0.0157    precision@20 : 0.0119    recall@10 : 0.1567    recall@20 : 0.2377    mrr@10 : 0.0593    mrr@20 : 0.0648    hit@10 : 0.1567    hit@20 : 0.2377    ndcg@10 : 0.0818    ndcg@20 : 0.1021
+Wed 19 Nov 2025 20:53:37 INFO  epoch 8 training [time: 6.57s, train loss: 11.9612]
+Wed 19 Nov 2025 20:54:24 INFO  epoch 8 evaluating [time: 46.75s, valid_score: 0.078600]
+Wed 19 Nov 2025 20:54:24 INFO  valid result: 
+precision@10 : 0.0149    precision@20 : 0.012    recall@10 : 0.1493    recall@20 : 0.2409    mrr@10 : 0.0571    mrr@20 : 0.0634    hit@10 : 0.1493    hit@20 : 0.2409    ndcg@10 : 0.0786    ndcg@20 : 0.1016
+Wed 19 Nov 2025 20:54:30 INFO  epoch 9 training [time: 6.34s, train loss: 11.8327]
+Wed 19 Nov 2025 20:55:16 INFO  epoch 9 evaluating [time: 45.89s, valid_score: 0.081000]
+Wed 19 Nov 2025 20:55:16 INFO  valid result: 
+precision@10 : 0.0158    precision@20 : 0.0131    recall@10 : 0.1578    recall@20 : 0.2612    mrr@10 : 0.0579    mrr@20 : 0.0649    hit@10 : 0.1578    hit@20 : 0.2612    ndcg@10 : 0.081    ndcg@20 : 0.1069
+Wed 19 Nov 2025 20:55:23 INFO  epoch 10 training [time: 6.50s, train loss: 11.8192]
+Wed 19 Nov 2025 20:56:10 INFO  epoch 10 evaluating [time: 46.91s, valid_score: 0.083200]
+Wed 19 Nov 2025 20:56:10 INFO  valid result: 
+precision@10 : 0.0155    precision@20 : 0.0127    recall@10 : 0.1546    recall@20 : 0.2548    mrr@10 : 0.0616    mrr@20 : 0.0684    hit@10 : 0.1546    hit@20 : 0.2548    ndcg@10 : 0.0832    ndcg@20 : 0.1083
+Wed 19 Nov 2025 20:56:10 INFO  Finished training, best eval result in epoch 4
+Wed 19 Nov 2025 20:56:10 INFO  Loading model structure and parameters from saved\GCMC-Nov-19-2025_20-46-05.pth
+Wed 19 Nov 2025 20:56:59 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    33.00 %     |
++-------------+----------------+
+| GPU         |   0.0 / 0.0    |
++-------------+----------------+
+| Memory      | 0.50 G/13.86 G |
++-------------+----------------+
+Wed 19 Nov 2025 20:56:59 INFO  best valid : OrderedDict([('precision@10', 0.0156), ('precision@20', 0.0119), ('recall@10', 0.1557), ('recall@20', 0.2388), ('mrr@10', 0.0619), ('mrr@20', 0.0677), ('hit@10', 0.1557), ('hit@20', 0.2388), ('ndcg@10', 0.0837), ('ndcg@20', 0.1048)])
+Wed 19 Nov 2025 20:56:59 INFO  test result: OrderedDict([('precision@10', 0.0158), ('precision@20', 0.0112), ('recall@10', 0.1578), ('recall@20', 0.2239), ('mrr@10', 0.0645), ('mrr@20', 0.069), ('hit@10', 0.1578), ('hit@20', 0.2239), ('ndcg@10', 0.0862), ('ndcg@20', 0.1028)])

@@ -1,4 +1,5 @@
 #python=3.11.13
+torch==2.3
 scipy==1.10.1
 recbole==1.2.1
 matplotlib==3.10.6

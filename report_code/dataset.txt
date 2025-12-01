@@ -1,0 +1,154 @@
+import zipfile
+import shutil
+from pathlib import Path
+import pandas as pd
+
+def unzip(zip_path: str):
+    """Unzip a specific file, print 'Unzipped', then delete the extracted files."""
+    zip_path = Path(zip_path)
+    if not zip_path.exists() or zip_path.suffix != '.zip':
+        print(f"❌ File not found or not a .zip: {zip_path}")
+        return
+
+    # Extraction folder (same name as zip)
+    extract_dir = zip_path.parent / zip_path.stem
+
+    # Unzip the file
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        zip_ref.extractall(extract_dir)
+    print("✅ extract_dir Unzipped")
+
+def cleanup(folder_path: str):
+    folder_path = Path(folder_path)
+    if folder_path.exists():
+        shutil.rmtree(folder_path)
+        print(f"🧹 Deleted extracted folder: {folder_path}")
+
+def filter_users(df_inter: pd.DataFrame, item_cuttoff: float):
+    # Remove only the cutoff users entirely
+    pr_user_item_counts = df_inter.groupby('user_id:token')['item_id:token'].nunique()
+    item_cuttoff_users = pr_user_item_counts[pr_user_item_counts < item_cuttoff].index
+    df = df_inter[~df_inter['user_id:token'].isin(item_cuttoff_users)].copy()
+
+    # For users who interacted with all items, drop ONE random item interaction
+    unique_items_count = df['item_id:token'].nunique()
+    all_item_users = pr_user_item_counts[pr_user_item_counts >= unique_items_count].index
+    rows_to_drop = (
+        df[df['user_id:token'].isin(all_item_users)]
+        .groupby('user_id:token')
+        .sample(1)
+    )
+    df = df.drop(rows_to_drop.index)
+    
+    return df
+
+def sparsity(df_inter: pd.DataFrame):
+    item_count = df_inter['item_id:token'].nunique()
+    user_count = df_inter['user_id:token'].nunique()
+    interaction_count = len(df_inter)
+
+    print(f"Sparsity = \
+          (({user_count}*{item_count})-{interaction_count})/({user_count}*{item_count}) = \
+          {((user_count*item_count)-interaction_count)/(user_count*item_count)}")
+
+def split_train_valid_test(df: pd.DataFrame, seed: int = 22):
+    df = df.copy()
+
+    # ensure random but reproducible sampling
+    # 1 validation interaction per user
+    val_idx = (
+        df.groupby('user_id:token', group_keys=False)
+        .sample(n=1, random_state=seed)
+        .index
+    )
+    remaining = df.drop(index=val_idx)
+
+    # 1 test interaction per user from remaining
+    test_idx = (
+        remaining.groupby('user_id:token', group_keys=False)
+                .sample(n=1, random_state=seed + 1)
+                .index
+    )
+
+    df_val = df.loc[val_idx].copy()
+    df_test = df.loc[test_idx].copy()
+    df_train = df.drop(index=val_idx.union(test_idx)).copy()
+
+    return df_train, df_val, df_test
+
+
+zip_path = "./data/zip/"
+save_path = "./data/split/"
+datasets = ['ml-100k', 'jester', 'amazon_all_beauty', 'netflix']
+datatypes = ['expR', 'impR', 'impB']
+rating = [(1,5), (-10,10), (0,5), (1,5)]
+
+MovieLens, Jester, Amazon, Netflix = range(4)
+
+item_cuttoff = 5                                    # <-- Make changes here
+
+for d in [MovieLens, Jester, Amazon, Netflix]:      # <-- Datasets here
+
+    rl, ru = rating[d]
+    good_rating = (rl + ((ru-rl)*0.75))
+    dataset = datasets[d]
+    #----------------------------------------------------------------------------
+    
+    unzip(f"{zip_path}{dataset}.zip")
+
+    # --- Load the .inter file ---
+    df_inter = pd.read_csv(f"{zip_path}{dataset}/{dataset}.inter", sep="\t")
+
+    # --- Keep only desired collumns ---
+    desired_cols = ['user_id:token', 'item_id:token', 'rating:float']
+    df_inter = df_inter[[c for c in desired_cols if c in df_inter.columns]]
+    print("✅ .inter file opened")
+    sparsity(df_inter)
+
+    # --- Filtering users for explicit rating ---
+    df_inter_exp = filter_users(df_inter, item_cuttoff)
+    print("✅ users filtered - for explicit")
+    sparsity(df_inter_exp)
+
+    df_inter_imp = filter_users(df_inter_exp[df_inter_exp['rating:float'] >= good_rating].copy(), 
+                                item_cuttoff)
+    print("✅ users filtered - for emplicit")
+    sparsity(df_inter_imp)
+
+    exp_train, exp_valid, exp_test = split_train_valid_test(df_inter_exp)
+    imp_train, imp_valid, imp_test = split_train_valid_test(df_inter_imp)
+    print("✅ splits created (train/valid/test)")
+
+    # --- save files ---
+
+    # explicit rating interaction files
+    base_path = f"{save_path}{dataset}/{dataset}--expR/{dataset}--expR"
+    Path(base_path).parent.mkdir(parents=True, exist_ok=True)
+    exp_train.to_csv(f"{base_path}.train.inter", sep='\t', index=False)
+    exp_valid.to_csv(f"{base_path}.valid.inter", sep='\t', index=False)
+    exp_test.to_csv(f"{base_path}.test.inter", sep='\t', index=False)
+
+    # implicit rating interaction files
+    base_path = f"{save_path}{dataset}/{dataset}--impR/{dataset}--impR"
+    Path(base_path).parent.mkdir(parents=True, exist_ok=True)
+    imp_train.to_csv(f"{base_path}.train.inter", sep='\t', index=False)
+    imp_valid.to_csv(f"{base_path}.valid.inter", sep='\t', index=False)
+    imp_test.to_csv(f"{base_path}.test.inter", sep='\t', index=False)
+
+    # three implicit binary interaction files
+    imp_train.loc[:, 'rating:float'] = 1
+    imp_valid.loc[:, 'rating:float'] = 1
+    imp_test.loc[:, 'rating:float'] = 1
+    imp_train.rename(columns={'rating:float': 'label:float'}, inplace=True)
+    imp_valid.rename(columns={'rating:float': 'label:float'}, inplace=True)
+    imp_test.rename(columns={'rating:float': 'label:float'}, inplace=True)
+
+    base_path = f"{save_path}{dataset}/{dataset}--impB/{dataset}--impB"
+    Path(base_path).parent.mkdir(parents=True, exist_ok=True)
+    imp_train.to_csv(f"{base_path}.train.inter", sep='\t', index=False)
+    imp_valid.to_csv(f"{base_path}.valid.inter", sep='\t', index=False)
+    imp_test.to_csv(f"{base_path}.test.inter", sep='\t', index=False)
+
+    print("✅ split .inter files and .item file saved")
+
+    cleanup(f"{zip_path}{dataset}")

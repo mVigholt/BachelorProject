@@ -1,0 +1,67 @@
+# Patch for NumPy >= 1.24 where np.bool8 was removed
+import numpy as np
+if not hasattr(np, "bool8"):
+    np.bool8 = np.bool_
+if not hasattr(np, "np.float_"):
+    np.float_ = np.float64
+if not hasattr(np, "np.complex_"):
+    np.complex_ = np.complex128
+if not hasattr(np, "np.unicode_"):
+    np.unicode_ = np.str_
+
+# Patch for printing to log from .ipynb
+import logging
+def recbole_reset_logs():
+    logging.shutdown()
+    for handler in logging.root.handlers[:]:
+        handler.close()
+        logging.root.removeHandler(handler)
+
+
+from recbole.quick_start import run_recbole
+
+models = ['ItemKNN', 'BPR', 'NeuMF', 'GCMC']
+datasets = ['ml-100k', 'jester', 'amazon_all_beauty', 'netflix']
+datatypes = ['expR', 'impR', 'impB']
+
+MovieLens, Jester, Amazon, Netflix = range(4)
+ItemKNN, BPR, NeuMF, GCMC = range(4)
+expR, impR, impB = range(3)
+
+for m in [GCMC]:                            #<-- models here
+    for d in [Jester]:                      #<-- datasets here
+        for t in [expR]:                    #<-- datatypes here
+            model = models[m]            
+            dataset = datasets[d]       
+            datatype = datatypes[t]
+
+            config_dict = {
+                # --- Model + data selection ---
+                'model': model,
+                'data_path': f'./data/split/{dataset}',                                
+                'dataset': f'{dataset}--{datatype}',      
+                'benchmark_filename': ['train','valid','test'],                    
+                
+                # --- Disable RecBole auto-splitting ---
+                'eval_args': {
+                    'split': {'RS': [0, 0, 0]},     # no random split
+                    'mode': 'full'
+                },
+                'test_args': {
+                    'mode': 'full'                  # Full ranking (no sampling)
+                }, 
+
+                # --- Evaluation targets ---
+                'topk': [10, 20],   # Top-k recommendations to consider
+                'metrics': ['Precision', 'Recall', 'MRR', 'Hit', 'NDCG'],
+
+                # --- Training schedule + early stopping ---
+                'epochs': 50,                   # Max epochs
+                'eval_step': 1,                 # Evaluate every epoch
+                'stopping_step': 5,             # Stop if no improvement for 5 evals (i.e., 5 epochs)
+                'valid_metric': 'NDCG@10',      # Choose ONE metric for early stopping
+                'valid_metric_bigger': True     # because higher NDCG is better
+            }
+   
+            run_recbole(config_dict=config_dict)
+            recbole_reset_logs()

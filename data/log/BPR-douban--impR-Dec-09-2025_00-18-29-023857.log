@@ -1,0 +1,175 @@
+Tue 09 Dec 2025 00:18:29 INFO  ['c:\\Users\\martin\\miniconda3\\envs\\bp\\Lib\\site-packages\\ipykernel_launcher.py', '--f=c:\\Users\\martin\\AppData\\Roaming\\jupyter\\runtime\\kernel-v36d94b79157c8ac1892c0baa1603bfba24b37cfdf.json']
+Tue 09 Dec 2025 00:18:29 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = ./data/split/douban\douban--impR
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 50
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 5
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0, 0, 0]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Precision', 'Recall', 'MRR', 'Hit', 'NDCG']
+topk = [10, 20]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = ['train', 'valid', 'test']
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Tue 09 Dec 2025 00:18:31 INFO  douban--impR
+The number of users: 54411
+Average actions of users: 7.565815107517
+The number of items: 29
+Average actions of items: 14702.0
+The number of inters: 411656
+The sparsity of the dataset: 73.91146186844826%
+Remain Fields: ['user_id', 'item_id']
+Tue 09 Dec 2025 00:18:34 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Tue 09 Dec 2025 00:18:34 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0, 0, 0]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Tue 09 Dec 2025 00:18:34 INFO  BPR(
+  (user_embedding): Embedding(54411, 64)
+  (item_embedding): Embedding(29, 64)
+  (loss): BPRLoss()
+)
+Trainable parameters: 3484160
+Tue 09 Dec 2025 00:18:34 INFO  FLOPs: 128.0
+Tue 09 Dec 2025 00:18:39 INFO  epoch 0 training [time: 4.96s, train loss: 101.8675]
+Tue 09 Dec 2025 00:18:42 INFO  epoch 0 evaluating [time: 2.92s, valid_score: 0.348400]
+Tue 09 Dec 2025 00:18:42 INFO  valid result: 
+precision@10 : 0.0673    precision@20 : 0.0466    recall@10 : 0.6732    recall@20 : 0.9326    mrr@10 : 0.2502    mrr@20 : 0.2683    hit@10 : 0.6732    hit@20 : 0.9326    ndcg@10 : 0.3484    ndcg@20 : 0.4142
+Tue 09 Dec 2025 00:18:42 INFO  Saving current: saved\BPR-Dec-09-2025_00-18-34.pth
+Tue 09 Dec 2025 00:18:47 INFO  epoch 1 training [time: 4.85s, train loss: 90.8529]
+Tue 09 Dec 2025 00:18:50 INFO  epoch 1 evaluating [time: 2.82s, valid_score: 0.407300]
+Tue 09 Dec 2025 00:18:50 INFO  valid result: 
+precision@10 : 0.0752    precision@20 : 0.048    recall@10 : 0.7522    recall@20 : 0.9603    mrr@10 : 0.3024    mrr@20 : 0.3174    hit@10 : 0.7522    hit@20 : 0.9603    ndcg@10 : 0.4073    ndcg@20 : 0.4606
+Tue 09 Dec 2025 00:18:50 INFO  Saving current: saved\BPR-Dec-09-2025_00-18-34.pth
+Tue 09 Dec 2025 00:18:55 INFO  epoch 2 training [time: 4.87s, train loss: 70.5569]
+Tue 09 Dec 2025 00:18:58 INFO  epoch 2 evaluating [time: 3.20s, valid_score: 0.421500]
+Tue 09 Dec 2025 00:18:58 INFO  valid result: 
+precision@10 : 0.0768    precision@20 : 0.0485    recall@10 : 0.7683    recall@20 : 0.969    mrr@10 : 0.316    mrr@20 : 0.3305    hit@10 : 0.7683    hit@20 : 0.969    ndcg@10 : 0.4215    ndcg@20 : 0.473
+Tue 09 Dec 2025 00:18:58 INFO  Saving current: saved\BPR-Dec-09-2025_00-18-34.pth
+Tue 09 Dec 2025 00:19:03 INFO  epoch 3 training [time: 4.87s, train loss: 54.5906]
+Tue 09 Dec 2025 00:19:06 INFO  epoch 3 evaluating [time: 3.07s, valid_score: 0.426000]
+Tue 09 Dec 2025 00:19:06 INFO  valid result: 
+precision@10 : 0.0774    precision@20 : 0.0487    recall@10 : 0.7745    recall@20 : 0.9736    mrr@10 : 0.3198    mrr@20 : 0.3342    hit@10 : 0.7745    hit@20 : 0.9736    ndcg@10 : 0.426    ndcg@20 : 0.477
+Tue 09 Dec 2025 00:19:06 INFO  Saving current: saved\BPR-Dec-09-2025_00-18-34.pth
+Tue 09 Dec 2025 00:19:11 INFO  epoch 4 training [time: 4.72s, train loss: 42.3657]
+Tue 09 Dec 2025 00:19:14 INFO  epoch 4 evaluating [time: 2.85s, valid_score: 0.425800]
+Tue 09 Dec 2025 00:19:14 INFO  valid result: 
+precision@10 : 0.0774    precision@20 : 0.0488    recall@10 : 0.7742    recall@20 : 0.9752    mrr@10 : 0.3196    mrr@20 : 0.3342    hit@10 : 0.7742    hit@20 : 0.9752    ndcg@10 : 0.4258    ndcg@20 : 0.4773
+Tue 09 Dec 2025 00:19:19 INFO  epoch 5 training [time: 4.90s, train loss: 32.3386]
+Tue 09 Dec 2025 00:19:22 INFO  epoch 5 evaluating [time: 2.91s, valid_score: 0.423400]
+Tue 09 Dec 2025 00:19:22 INFO  valid result: 
+precision@10 : 0.0773    precision@20 : 0.0487    recall@10 : 0.7728    recall@20 : 0.9747    mrr@10 : 0.317    mrr@20 : 0.3316    hit@10 : 0.7728    hit@20 : 0.9747    ndcg@10 : 0.4234    ndcg@20 : 0.4752
+Tue 09 Dec 2025 00:19:27 INFO  epoch 6 training [time: 4.90s, train loss: 24.7719]
+Tue 09 Dec 2025 00:19:30 INFO  epoch 6 evaluating [time: 2.90s, valid_score: 0.419500]
+Tue 09 Dec 2025 00:19:30 INFO  valid result: 
+precision@10 : 0.0769    precision@20 : 0.0487    recall@10 : 0.7691    recall@20 : 0.9739    mrr@10 : 0.313    mrr@20 : 0.3278    hit@10 : 0.7691    hit@20 : 0.9739    ndcg@10 : 0.4195    ndcg@20 : 0.472
+Tue 09 Dec 2025 00:19:34 INFO  epoch 7 training [time: 4.76s, train loss: 18.9575]
+Tue 09 Dec 2025 00:19:37 INFO  epoch 7 evaluating [time: 2.85s, valid_score: 0.415900]
+Tue 09 Dec 2025 00:19:37 INFO  valid result: 
+precision@10 : 0.0765    precision@20 : 0.0487    recall@10 : 0.7655    recall@20 : 0.9737    mrr@10 : 0.3095    mrr@20 : 0.3245    hit@10 : 0.7655    hit@20 : 0.9737    ndcg@10 : 0.4159    ndcg@20 : 0.4693
+Tue 09 Dec 2025 00:19:42 INFO  epoch 8 training [time: 4.75s, train loss: 14.5677]
+Tue 09 Dec 2025 00:19:45 INFO  epoch 8 evaluating [time: 2.94s, valid_score: 0.412600]
+Tue 09 Dec 2025 00:19:45 INFO  valid result: 
+precision@10 : 0.0762    precision@20 : 0.0486    recall@10 : 0.762    recall@20 : 0.9727    mrr@10 : 0.3064    mrr@20 : 0.3215    hit@10 : 0.762    hit@20 : 0.9727    ndcg@10 : 0.4126    ndcg@20 : 0.4666
+Tue 09 Dec 2025 00:19:50 INFO  epoch 9 training [time: 4.78s, train loss: 11.2497]
+Tue 09 Dec 2025 00:19:53 INFO  epoch 9 evaluating [time: 3.30s, valid_score: 0.409300]
+Tue 09 Dec 2025 00:19:53 INFO  valid result: 
+precision@10 : 0.0758    precision@20 : 0.0486    recall@10 : 0.758    recall@20 : 0.9725    mrr@10 : 0.3032    mrr@20 : 0.3187    hit@10 : 0.758    hit@20 : 0.9725    ndcg@10 : 0.4093    ndcg@20 : 0.4642
+Tue 09 Dec 2025 00:19:53 INFO  Finished training, best eval result in epoch 3
+Tue 09 Dec 2025 00:19:53 INFO  Loading model structure and parameters from saved\BPR-Dec-09-2025_00-18-34.pth
+Tue 09 Dec 2025 00:19:57 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     2.70 %     |
++-------------+----------------+
+| GPU         |   0.0 / 0.0    |
++-------------+----------------+
+| Memory      | 0.82 G/13.86 G |
++-------------+----------------+
+Tue 09 Dec 2025 00:19:57 INFO  best valid : OrderedDict([('precision@10', 0.0774), ('precision@20', 0.0487), ('recall@10', 0.7745), ('recall@20', 0.9736), ('mrr@10', 0.3198), ('mrr@20', 0.3342), ('hit@10', 0.7745), ('hit@20', 0.9736), ('ndcg@10', 0.426), ('ndcg@20', 0.477)])
+Tue 09 Dec 2025 00:19:57 INFO  test result: OrderedDict([('precision@10', 0.0802), ('precision@20', 0.049), ('recall@10', 0.802), ('recall@20', 0.9802), ('mrr@10', 0.3526), ('mrr@20', 0.3656), ('hit@10', 0.802), ('hit@20', 0.9802), ('ndcg@10', 0.4578), ('ndcg@20', 0.5035)])

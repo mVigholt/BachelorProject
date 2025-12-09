@@ -7,7 +7,7 @@ def unzip(zip_path: str):
     """Unzip a specific file, print 'Unzipped', then delete the extracted files."""
     zip_path = Path(zip_path)
     if not zip_path.exists() or zip_path.suffix != '.zip':
-        print(f"❌ File not found or not a .zip: {zip_path}")
+        print(f"File not found or not a .zip: {zip_path}")
         return
 
     # Extraction folder (same name as zip)
@@ -16,13 +16,13 @@ def unzip(zip_path: str):
     # Unzip the file
     with zipfile.ZipFile(zip_path, 'r') as zip_ref:
         zip_ref.extractall(extract_dir)
-    print("✅ extract_dir Unzipped")
+    print("extract_dir Unzipped")
 
 def cleanup(folder_path: str):
     folder_path = Path(folder_path)
     if folder_path.exists():
         shutil.rmtree(folder_path)
-        print(f"🧹 Deleted extracted folder: {folder_path}")
+        print(f"Deleted extracted folder: {folder_path}")
 
 def filter_users(df_inter: pd.DataFrame, item_cuttoff: float):
     # Remove only the cutoff users entirely
@@ -47,9 +47,10 @@ def sparsity(df_inter: pd.DataFrame):
     user_count = df_inter['user_id:token'].nunique()
     interaction_count = len(df_inter)
 
-    print(f"Sparsity = \
-          (({user_count}*{item_count})-{interaction_count})/({user_count}*{item_count}) = \
-          {((user_count*item_count)-interaction_count)/(user_count*item_count)}")
+    print(f"Sparsity = " +
+          f"(({user_count}*{item_count})-{interaction_count})/({user_count}*{item_count}) = " +
+          f"{((user_count*item_count)-interaction_count)/(user_count*item_count)}"
+    )
 
 def split_train_valid_test(df: pd.DataFrame, seed: int = 22):
     df = df.copy()
@@ -102,22 +103,22 @@ for d in [MovieLens, Jester, Amazon, Netflix]:      # <-- Datasets here
     # --- Keep only desired collumns ---
     desired_cols = ['user_id:token', 'item_id:token', 'rating:float']
     df_inter = df_inter[[c for c in desired_cols if c in df_inter.columns]]
-    print("✅ .inter file opened")
+    print(".inter file opened")
     sparsity(df_inter)
 
     # --- Filtering users for explicit rating ---
     df_inter_exp = filter_users(df_inter, item_cuttoff)
-    print("✅ users filtered - for explicit")
+    print("users filtered - for explicit")
     sparsity(df_inter_exp)
 
     df_inter_imp = filter_users(df_inter_exp[df_inter_exp['rating:float'] >= good_rating].copy(), 
                                 item_cuttoff)
-    print("✅ users filtered - for emplicit")
+    print("users filtered - for emplicit")
     sparsity(df_inter_imp)
 
     exp_train, exp_valid, exp_test = split_train_valid_test(df_inter_exp)
     imp_train, imp_valid, imp_test = split_train_valid_test(df_inter_imp)
-    print("✅ splits created (train/valid/test)")
+    print("splits created (train/valid/test)")
 
     # --- save files ---
 
@@ -149,6 +150,6 @@ for d in [MovieLens, Jester, Amazon, Netflix]:      # <-- Datasets here
     imp_valid.to_csv(f"{base_path}.valid.inter", sep='\t', index=False)
     imp_test.to_csv(f"{base_path}.test.inter", sep='\t', index=False)
 
-    print("✅ split .inter files and .item file saved")
+    print("split .inter files saved")
 
     cleanup(f"{zip_path}{dataset}")

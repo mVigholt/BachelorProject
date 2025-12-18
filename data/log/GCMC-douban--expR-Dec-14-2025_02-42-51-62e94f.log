@@ -1,0 +1,212 @@
+Sun 14 Dec 2025 02:42:51 INFO  ['c:\\Users\\marti\\miniconda3\\envs\\bp_cuda\\Lib\\site-packages\\ipykernel_launcher.py', '--f=c:\\Users\\marti\\AppData\\Roaming\\jupyter\\runtime\\kernel-v3c445ff7fe94ae4af53429f549af66ad1608410b0.json']
+Sun 14 Dec 2025 02:42:51 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = ./data/split/douban\douban--expR
+checkpoint_dir = saved
+show_progress = False
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 50
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 5
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0, 0, 0]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}
+repeatable = False
+metrics = ['Precision', 'Recall', 'MRR', 'Hit', 'NDCG']
+topk = [10, 20]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = ['train', 'valid', 'test']
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+accum = stack
+gcn_output_dim = 500
+embedding_size = 64
+dropout_prob = 0.3
+sparse_feature = True
+class_num = 2
+num_basis_functions = 2
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.GENERAL
+num_workers = 4
+pin_memory = True
+test_args = {'mode': 'full'}
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cuda
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+
+
+Sun 14 Dec 2025 02:42:57 INFO  douban--expR
+The number of users: 108664
+Average actions of users: 8.903232931172525
+The number of items: 29
+Average actions of items: 34551.857142857145
+The number of inters: 967452
+The sparsity of the dataset: 69.29947931872245%
+Remain Fields: ['user_id', 'item_id', 'rating']
+Sun 14 Dec 2025 02:42:59 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Sun 14 Dec 2025 02:42:59 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0, 0, 0]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Sun 14 Dec 2025 02:43:01 INFO  GCMC(
+  (GcEncoder): GcEncoder(
+    (dropout): Dropout(p=0.3, inplace=False)
+    (sparse_dropout): SparseDropout()
+    (activate): ReLU()
+    (weights_u): ParameterList(  (0): Parameter containing: [torch.float32 of size 108693x500 (cuda:0)])
+    (weights_v): ParameterList(  (0): Parameter containing: [torch.float32 of size 108693x500 (cuda:0)])
+    (dense_layer_u): Linear(in_features=500, out_features=64, bias=False)
+    (dense_layer_v): Linear(in_features=500, out_features=64, bias=False)
+  )
+  (BiDecoder): BiDecoder(
+    (dropout): Dropout(p=0.0, inplace=False)
+    (weights): ParameterList(
+        (0): Parameter containing: [torch.float32 of size 64x64 (cuda:0)]
+        (1): Parameter containing: [torch.float32 of size 64x64 (cuda:0)]
+    )
+    (dense_layer): Linear(in_features=2, out_features=2, bias=False)
+  )
+  (loss_function): CrossEntropyLoss()
+)
+Trainable parameters: 54386696
+Sun 14 Dec 2025 02:43:01 INFO  FLOPs: 3478176004.0
+Sun 14 Dec 2025 02:44:18 INFO  epoch 0 training [time: 76.94s, train loss: 232.3571]
+Sun 14 Dec 2025 02:48:55 INFO  epoch 0 evaluating [time: 276.89s, valid_score: 0.367300]
+Sun 14 Dec 2025 02:48:55 INFO  valid result: 
+precision@10 : 0.0693    precision@20 : 0.0483    recall@10 : 0.6932    recall@20 : 0.9655    mrr@10 : 0.2686    mrr@20 : 0.2879    hit@10 : 0.6932    hit@20 : 0.9655    ndcg@10 : 0.3673    ndcg@20 : 0.4366
+Sun 14 Dec 2025 02:48:56 INFO  Saving current: saved\GCMC-Dec-14-2025_02-43-01.pth
+Sun 14 Dec 2025 02:50:13 INFO  epoch 1 training [time: 77.07s, train loss: 219.4144]
+Sun 14 Dec 2025 02:54:51 INFO  epoch 1 evaluating [time: 277.21s, valid_score: 0.411700]
+Sun 14 Dec 2025 02:54:51 INFO  valid result: 
+precision@10 : 0.0758    precision@20 : 0.0488    recall@10 : 0.7578    recall@20 : 0.9762    mrr@10 : 0.3062    mrr@20 : 0.3217    hit@10 : 0.7578    hit@20 : 0.9762    ndcg@10 : 0.4117    ndcg@20 : 0.4674
+Sun 14 Dec 2025 02:54:52 INFO  Saving current: saved\GCMC-Dec-14-2025_02-43-01.pth
+Sun 14 Dec 2025 02:56:09 INFO  epoch 2 training [time: 77.10s, train loss: 206.3742]
+Sun 14 Dec 2025 03:00:47 INFO  epoch 2 evaluating [time: 278.19s, valid_score: 0.409100]
+Sun 14 Dec 2025 03:00:47 INFO  valid result: 
+precision@10 : 0.0759    precision@20 : 0.0488    recall@10 : 0.7594    recall@20 : 0.9765    mrr@10 : 0.3024    mrr@20 : 0.3179    hit@10 : 0.7594    hit@20 : 0.9765    ndcg@10 : 0.4091    ndcg@20 : 0.4646
+Sun 14 Dec 2025 03:02:04 INFO  epoch 3 training [time: 77.07s, train loss: 196.1534]
+Sun 14 Dec 2025 03:06:43 INFO  epoch 3 evaluating [time: 278.16s, valid_score: 0.410100]
+Sun 14 Dec 2025 03:06:43 INFO  valid result: 
+precision@10 : 0.076    precision@20 : 0.0487    recall@10 : 0.7603    recall@20 : 0.9737    mrr@10 : 0.3033    mrr@20 : 0.3185    hit@10 : 0.7603    hit@20 : 0.9737    ndcg@10 : 0.4101    ndcg@20 : 0.4646
+Sun 14 Dec 2025 03:08:00 INFO  epoch 4 training [time: 77.07s, train loss: 192.5565]
+Sun 14 Dec 2025 03:12:38 INFO  epoch 4 evaluating [time: 278.08s, valid_score: 0.414000]
+Sun 14 Dec 2025 03:12:38 INFO  valid result: 
+precision@10 : 0.0762    precision@20 : 0.0487    recall@10 : 0.7625    recall@20 : 0.9749    mrr@10 : 0.3078    mrr@20 : 0.323    hit@10 : 0.7625    hit@20 : 0.9749    ndcg@10 : 0.414    ndcg@20 : 0.4683
+Sun 14 Dec 2025 03:12:39 INFO  Saving current: saved\GCMC-Dec-14-2025_02-43-01.pth
+Sun 14 Dec 2025 03:13:56 INFO  epoch 5 training [time: 77.08s, train loss: 187.5034]
+Sun 14 Dec 2025 03:18:34 INFO  epoch 5 evaluating [time: 278.11s, valid_score: 0.414100]
+Sun 14 Dec 2025 03:18:34 INFO  valid result: 
+precision@10 : 0.0768    precision@20 : 0.0489    recall@10 : 0.7682    recall@20 : 0.9771    mrr@10 : 0.3061    mrr@20 : 0.3211    hit@10 : 0.7682    hit@20 : 0.9771    ndcg@10 : 0.4141    ndcg@20 : 0.4674
+Sun 14 Dec 2025 03:18:36 INFO  Saving current: saved\GCMC-Dec-14-2025_02-43-01.pth
+Sun 14 Dec 2025 03:19:53 INFO  epoch 6 training [time: 77.02s, train loss: 184.7582]
+Sun 14 Dec 2025 03:24:31 INFO  epoch 6 evaluating [time: 277.83s, valid_score: 0.418100]
+Sun 14 Dec 2025 03:24:31 INFO  valid result: 
+precision@10 : 0.077    precision@20 : 0.0489    recall@10 : 0.7703    recall@20 : 0.9777    mrr@10 : 0.3106    mrr@20 : 0.3255    hit@10 : 0.7703    hit@20 : 0.9777    ndcg@10 : 0.4181    ndcg@20 : 0.4711
+Sun 14 Dec 2025 03:24:32 INFO  Saving current: saved\GCMC-Dec-14-2025_02-43-01.pth
+Sun 14 Dec 2025 03:25:49 INFO  epoch 7 training [time: 77.06s, train loss: 184.2192]
+Sun 14 Dec 2025 03:30:26 INFO  epoch 7 evaluating [time: 277.67s, valid_score: 0.417400]
+Sun 14 Dec 2025 03:30:27 INFO  valid result: 
+precision@10 : 0.077    precision@20 : 0.0489    recall@10 : 0.7702    recall@20 : 0.9772    mrr@10 : 0.3098    mrr@20 : 0.3246    hit@10 : 0.7702    hit@20 : 0.9772    ndcg@10 : 0.4174    ndcg@20 : 0.4703
+Sun 14 Dec 2025 03:31:44 INFO  epoch 8 training [time: 77.03s, train loss: 179.8942]
+Sun 14 Dec 2025 03:36:22 INFO  epoch 8 evaluating [time: 278.18s, valid_score: 0.416000]
+Sun 14 Dec 2025 03:36:22 INFO  valid result: 
+precision@10 : 0.0768    precision@20 : 0.0488    recall@10 : 0.7682    recall@20 : 0.977    mrr@10 : 0.3086    mrr@20 : 0.3236    hit@10 : 0.7682    hit@20 : 0.977    ndcg@10 : 0.416    ndcg@20 : 0.4694
+Sun 14 Dec 2025 03:37:39 INFO  epoch 9 training [time: 77.17s, train loss: 174.8049]
+Sun 14 Dec 2025 03:42:17 INFO  epoch 9 evaluating [time: 278.09s, valid_score: 0.414600]
+Sun 14 Dec 2025 03:42:17 INFO  valid result: 
+precision@10 : 0.0763    precision@20 : 0.0488    recall@10 : 0.763    recall@20 : 0.9755    mrr@10 : 0.3085    mrr@20 : 0.3236    hit@10 : 0.763    hit@20 : 0.9755    ndcg@10 : 0.4146    ndcg@20 : 0.4689
+Sun 14 Dec 2025 03:43:34 INFO  epoch 10 training [time: 77.06s, train loss: 170.4781]
+Sun 14 Dec 2025 03:48:12 INFO  epoch 10 evaluating [time: 277.34s, valid_score: 0.412400]
+Sun 14 Dec 2025 03:48:12 INFO  valid result: 
+precision@10 : 0.0758    precision@20 : 0.0487    recall@10 : 0.7582    recall@20 : 0.9748    mrr@10 : 0.307    mrr@20 : 0.3225    hit@10 : 0.7582    hit@20 : 0.9748    ndcg@10 : 0.4124    ndcg@20 : 0.4677
+Sun 14 Dec 2025 03:49:29 INFO  epoch 11 training [time: 77.01s, train loss: 165.0251]
+Sun 14 Dec 2025 03:54:06 INFO  epoch 11 evaluating [time: 277.09s, valid_score: 0.411800]
+Sun 14 Dec 2025 03:54:06 INFO  valid result: 
+precision@10 : 0.0759    precision@20 : 0.0487    recall@10 : 0.7588    recall@20 : 0.9742    mrr@10 : 0.3062    mrr@20 : 0.3216    hit@10 : 0.7588    hit@20 : 0.9742    ndcg@10 : 0.4118    ndcg@20 : 0.4669
+Sun 14 Dec 2025 03:55:23 INFO  epoch 12 training [time: 77.03s, train loss: 160.4513]
+Sun 14 Dec 2025 04:00:00 INFO  epoch 12 evaluating [time: 277.14s, valid_score: 0.411100]
+Sun 14 Dec 2025 04:00:00 INFO  valid result: 
+precision@10 : 0.0754    precision@20 : 0.0486    recall@10 : 0.7543    recall@20 : 0.9728    mrr@10 : 0.3065    mrr@20 : 0.3221    hit@10 : 0.7543    hit@20 : 0.9728    ndcg@10 : 0.4111    ndcg@20 : 0.4669
+Sun 14 Dec 2025 04:00:01 INFO  Finished training, best eval result in epoch 6
+Sun 14 Dec 2025 04:00:01 INFO  Loading model structure and parameters from saved\GCMC-Dec-14-2025_02-43-01.pth
+Sun 14 Dec 2025 04:04:44 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     4.10 %     |
++-------------+----------------+
+| GPU         | 4.26 G/8.00 G  |
++-------------+----------------+
+| Memory      | 1.35 G/15.26 G |
++-------------+----------------+
+Sun 14 Dec 2025 04:04:44 INFO  best valid : OrderedDict([('precision@10', 0.077), ('precision@20', 0.0489), ('recall@10', 0.7703), ('recall@20', 0.9777), ('mrr@10', 0.3106), ('mrr@20', 0.3255), ('hit@10', 0.7703), ('hit@20', 0.9777), ('ndcg@10', 0.4181), ('ndcg@20', 0.4711)])
+Sun 14 Dec 2025 04:04:45 INFO  test result: OrderedDict([('precision@10', 0.0797), ('precision@20', 0.0492), ('recall@10', 0.7973), ('recall@20', 0.9847), ('mrr@10', 0.3429), ('mrr@20', 0.3564), ('hit@10', 0.7973), ('hit@20', 0.9847), ('ndcg@10', 0.4494), ('ndcg@20', 0.4973)])

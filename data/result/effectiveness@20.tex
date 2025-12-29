@@ -20,52 +20,52 @@
   hline{Z} = {2}{-}{solid}
 }
 Dataset & Datatype & Model & Recall@20 & Precision@20 & MRR@20 & Hit@20 & NDCG@20 \\
-amazon\_all\_beauty & expR & ItemKNN &  &  &  &  &  \\
-amazon\_all\_beauty & expR & BPR &  &  &  &  &  \\
-amazon\_all\_beauty & expR & NeuMF &  &  &  &  &  \\
-amazon\_all\_beauty & expR & GCMC &  &  &  &  &  \\
-amazon\_all\_beauty & impR & ItemKNN &  &  &  &  &  \\
-amazon\_all\_beauty & impR & BPR &  &  &  &  &  \\
-amazon\_all\_beauty & impR & NeuMF &  &  &  &  &  \\
-amazon\_all\_beauty & impR & GCMC &  &  &  &  &  \\
-amazon\_all\_beauty & impB & ItemKNN &  &  &  &  &  \\
-amazon\_all\_beauty & impB & BPR &  &  &  &  &  \\
-amazon\_all\_beauty & impB & NeuMF &  &  &  &  &  \\
-amazon\_all\_beauty & impB & GCMC &  &  &  &  &  \\
-ml-100k & expR & ItemKNN &  &  &  &  &  \\
-ml-100k & expR & BPR &  &  &  &  &  \\
-ml-100k & expR & NeuMF &  &  &  &  &  \\
-ml-100k & expR & GCMC &  &  &  &  &  \\
-ml-100k & impR & ItemKNN &  &  &  &  &  \\
-ml-100k & impR & BPR &  &  &  &  &  \\
-ml-100k & impR & NeuMF &  &  &  &  &  \\
-ml-100k & impR & GCMC &  &  &  &  &  \\
-ml-100k & impB & ItemKNN &  &  &  &  &  \\
-ml-100k & impB & BPR &  &  &  &  &  \\
-ml-100k & impB & NeuMF &  &  &  &  &  \\
-ml-100k & impB & GCMC &  &  &  &  &  \\
-douban & expR & ItemKNN &  &  &  &  &  \\
-douban & expR & BPR &  &  &  &  &  \\
-douban & expR & NeuMF &  &  &  &  &  \\
-douban & expR & GCMC &  &  &  &  &  \\
-douban & impR & ItemKNN &  &  &  &  &  \\
-douban & impR & BPR &  &  &  &  &  \\
-douban & impR & NeuMF &  &  &  &  &  \\
-douban & impR & GCMC &  &  &  &  &  \\
-douban & impB & ItemKNN &  &  &  &  &  \\
-douban & impB & BPR &  &  &  &  &  \\
-douban & impB & NeuMF &  &  &  &  &  \\
-douban & impB & GCMC &  &  &  &  &  \\
-jester & expR & ItemKNN &  &  &  &  &  \\
-jester & expR & BPR &  &  &  &  &  \\
-jester & expR & NeuMF &  &  &  &  &  \\
-jester & expR & GCMC &  &  &  &  &  \\
-jester & impR & ItemKNN &  &  &  &  &  \\
-jester & impR & BPR &  &  &  &  &  \\
-jester & impR & NeuMF &  &  &  &  &  \\
-jester & impR & GCMC &  &  &  &  &  \\
-jester & impB & ItemKNN &  &  &  &  &  \\
-jester & impB & BPR &  &  &  &  &  \\
-jester & impB & NeuMF &  &  &  &  &  \\
-jester & impB & GCMC &  &  &  &  &  \\
+amazon\_all\_beauty & expR & ItemKNN & 0.2882 & 0.0144 & 0.0817 & 0.2882 & 0.1261 \\
+amazon\_all\_beauty & \underline{expR} & BPR & 0.3005 & 0.0150 & 0.0863 & 0.3005 & 0.1321 \\
+amazon\_all\_beauty & \underline{expR} & NeuMF & 0.3433 & 0.0172 & 0.0814 & 0.3433 & 0.1376 \\
+amazon\_all\_beauty & \underline{expR} & \textbf{GCMC} & \textbf{0.3753} & \textbf{0.0188} & \textbf{0.1099} & \textbf{0.3753} & \textbf{0.1680} \\
+amazon\_all\_beauty & impR & ItemKNN & 0.3006 & 0.0150 & \textbf{0.0829} & 0.3006 & \textbf{0.1294} \\
+amazon\_all\_beauty & impR & BPR & 0.2084 & 0.0104 & 0.0376 & 0.2084 & 0.0733 \\
+amazon\_all\_beauty & impR & NeuMF & \textbf{0.3176} & \textbf{0.0159} & 0.0710 & \textbf{0.3176} & 0.1240 \\
+amazon\_all\_beauty & impR & \textbf{GCMC} & 0.3166 & 0.0158 & 0.0727 & 0.3166 & 0.1252 \\
+amazon\_all\_beauty & \underline{impB} & ItemKNN & 0.3046 & 0.0152 & \textbf{0.0834} & 0.3046 & \textbf{0.1304} \\
+amazon\_all\_beauty & impB & BPR & 0.2084 & 0.0104 & 0.0376 & 0.2084 & 0.0733 \\
+amazon\_all\_beauty & impB & NeuMF & \textbf{0.3176} & \textbf{0.0159} & 0.0710 & \textbf{0.3176} & 0.1240 \\
+amazon\_all\_beauty & impB & \textbf{GCMC} & 0.3166 & 0.0158 & 0.0727 & 0.3166 & 0.1252 \\
+ml-100k & expR & ItemKNN & 0.8971 & 0.0449 & 0.4592 & 0.8971 & 0.5595 \\
+ml-100k & \underline{expR} & BPR & 0.9046 & 0.0452 & 0.4401 & 0.9046 & 0.5463 \\
+ml-100k & \underline{expR} & \textbf{NeuMF} & \textbf{0.9205} & \textbf{0.0460} & \textbf{0.4647} & \textbf{0.9205} & \textbf{0.5690} \\
+ml-100k & \underline{expR} & GCMC & 0.9173 & 0.0459 & 0.4408 & 0.9173 & 0.5493 \\
+ml-100k & impR & ItemKNN & 0.8977 & 0.0449 & 0.4155 & 0.8977 & 0.5257 \\
+ml-100k & impR & BPR & 0.9041 & 0.0452 & 0.4032 & 0.9041 & 0.5166 \\
+ml-100k & impR & \textbf{NeuMF} & \textbf{0.9062} & \textbf{0.0453} & \textbf{0.4180} & \textbf{0.9062} & \textbf{0.5296} \\
+ml-100k & impR & GCMC & 0.8998 & 0.0450 & 0.3940 & 0.8998 & 0.5085 \\
+ml-100k & \underline{impB} & ItemKNN & 0.9019 & 0.0451 & 0.4161 & 0.9019 & 0.5270 \\
+ml-100k & impB & BPR & 0.9041 & 0.0452 & 0.4032 & 0.9041 & 0.5166 \\
+ml-100k & impB & \textbf{NeuMF} & \textbf{0.9062} & \textbf{0.0453} & \textbf{0.4180} & \textbf{0.9062} & \textbf{0.5296} \\
+ml-100k & impB & GCMC & 0.8987 & 0.0449 & 0.3941 & 0.8987 & 0.5084 \\
+douban & expR & \textbf{ItemKNN} & 0.9822 & 0.0491 & 0.3518 & 0.9822 & 0.4927 \\
+douban & \underline{expR} & BPR & 0.9704 & 0.0485 & 0.3188 & 0.9704 & 0.4630 \\
+douban & \underline{expR} & NeuMF & 0.9812 & 0.0491 & 0.3338 & 0.9812 & 0.4780 \\
+douban & \underline{expR} & GCMC & \textbf{0.9847} & \textbf{0.0492} & \textbf{0.3564} & \textbf{0.9847} & \textbf{0.4973} \\
+douban & impR & \textbf{ItemKNN} & \textbf{0.9944} & \textbf{0.0497} & \textbf{0.3994} & \textbf{0.9944} & \textbf{0.5342} \\
+douban & impR & BPR & 0.9817 & 0.0491 & 0.3685 & 0.9817 & 0.5062 \\
+douban & impR & NeuMF & 0.9943 & \textbf{0.0497} & 0.3846 & 0.9943 & 0.5218 \\
+douban & impR & GCMC & 0.9931 & \textbf{0.0497} & 0.3863 & 0.9931 & 0.5236 \\
+douban & \underline{impB} & \textbf{ItemKNN} & \textbf{0.9944} & \textbf{0.0497} & \textbf{0.3994} & \textbf{0.9944} & \textbf{0.5343} \\
+douban & impB & BPR & 0.9817 & 0.0491 & 0.3685 & 0.9817 & 0.5062 \\
+douban & impB & NeuMF & 0.9943 & \textbf{0.0497} & 0.3846 & 0.9943 & 0.5218 \\
+douban & impB & GCMC & 0.9932 & \textbf{0.0497} & 0.3862 & 0.9932 & 0.5235 \\
+jester & expR & ItemKNN & 0.6306 & 0.0315 & 0.4182 & 0.6306 & 0.4671 \\
+jester & \underline{expR} & BPR & 0.9423 & 0.0471 & 0.7877 & 0.9423 & 0.8254 \\
+jester & \underline{expR} & NeuMF & 0.9138 & 0.0457 & 0.6109 & 0.9138 & 0.6817 \\
+jester & \underline{expR} & \textbf{GCMC} & \textbf{0.9474} & \textbf{0.0474} & \textbf{0.8138} & \textbf{0.9474} & \textbf{0.8461} \\
+jester & impR & ItemKNN & 0.7504 & 0.0375 & 0.2661 & 0.7504 & 0.3739 \\
+jester & impR & BPR & 0.8023 & 0.0401 & 0.2704 & 0.8023 & 0.3886 \\
+jester & impR & NeuMF & 0.8084 & 0.0404 & 0.2722 & 0.8084 & 0.3914 \\
+jester & impR & \textbf{GCMC} & \textbf{0.8241} & \textbf{0.0412} & \textbf{0.2839} & \textbf{0.8241} & \textbf{0.4043} \\
+jester & \underline{impB} & ItemKNN & 0.7515 & 0.0376 & 0.2676 & 0.7515 & 0.3752 \\
+jester & impB & BPR & 0.8023 & 0.0401 & 0.2704 & 0.8023 & 0.3886 \\
+jester & impB & NeuMF & 0.8084 & 0.0404 & 0.2722 & 0.8084 & 0.3914 \\
+jester & impB & \textbf{GCMC} & \textbf{0.8235} & \textbf{0.0412} & \textbf{0.2844} & \textbf{0.8235} & \textbf{0.4045} \\
 \end{tblr}

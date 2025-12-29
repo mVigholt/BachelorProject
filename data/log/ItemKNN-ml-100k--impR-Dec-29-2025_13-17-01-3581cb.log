@@ -1,12 +1,12 @@
-Sat 13 Dec 2025 23:36:43 INFO  ['c:\\Users\\marti\\miniconda3\\envs\\bp_cuda\\Lib\\site-packages\\ipykernel_launcher.py', '--f=c:\\Users\\marti\\AppData\\Roaming\\jupyter\\runtime\\kernel-v3c445ff7fe94ae4af53429f549af66ad1608410b0.json']
-Sat 13 Dec 2025 23:36:43 INFO  
+Mon 29 Dec 2025 13:17:01 INFO  ['c:\\Users\\marti\\miniconda3\\envs\\bp_cuda\\Lib\\site-packages\\ipykernel_launcher.py', '--f=c:\\Users\\marti\\AppData\\Roaming\\jupyter\\runtime\\kernel-v351daa346f84dc3599eb8e4c3c05f129cb23e28a2.json']
+Mon 29 Dec 2025 13:17:01 INFO  
 General Hyper Parameters:
 gpu_id = 0
 use_gpu = True
 seed = 2020
 state = INFO
 reproducibility = True
-data_path = ./data/split/jester\jester--impB
+data_path = ./data/split/ml-100k\ml-100k--impR
 checkpoint_dir = saved
 show_progress = False
 save_dataset = False
@@ -72,6 +72,9 @@ HEAD_ENTITY_ID_FIELD = head_id
 TAIL_ENTITY_ID_FIELD = tail_id
 RELATION_ID_FIELD = relation_id
 ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
 benchmark_filename = ['train', 'valid', 'test']
 
 Other Hyper Parameters: 
@@ -87,9 +90,6 @@ shrink = 0.0
 knn_method = item
 numerical_features = []
 discretization = None
-kg_reverse_r = False
-entity_kg_num_interval = [0,inf)
-relation_kg_num_interval = [0,inf)
 MODEL_TYPE = ModelType.TRADITIONAL
 num_workers = 4
 pin_memory = True
@@ -103,34 +103,34 @@ valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
 test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
 
 
-Sat 13 Dec 2025 23:36:46 INFO  jester--impB
-The number of users: 50098
-Average actions of users: 20.228696329121505
-The number of items: 101
-Average actions of items: 10133.97
-The number of inters: 1013397
-The sparsity of the dataset: 79.9719875776152%
-Remain Fields: ['user_id', 'item_id']
-Sat 13 Dec 2025 23:36:47 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
-Sat 13 Dec 2025 23:36:47 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0, 0, 0]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
-Sat 13 Dec 2025 23:36:48 INFO  ItemKNN()
+Mon 29 Dec 2025 13:17:02 INFO  ml-100k--impR
+The number of users: 939
+Average actions of users: 59.02025586353945
+The number of items: 1448
+Average actions of items: 38.25915687629578
+The number of inters: 55361
+The sparsity of the dataset: 95.92835625062514%
+Remain Fields: ['user_id', 'item_id', 'rating']
+Mon 29 Dec 2025 13:17:02 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Mon 29 Dec 2025 13:17:02 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0, 0, 0]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Mon 29 Dec 2025 13:17:02 INFO  ItemKNN()
 Trainable parameters: 1
-Sat 13 Dec 2025 23:36:51 INFO  FLOPs: 0.0
-Sat 13 Dec 2025 23:36:54 INFO  epoch 0 training [time: 2.94s, train loss: 0.0000]
-Sat 13 Dec 2025 23:37:26 INFO  epoch 0 evaluating [time: 32.75s, valid_score: 0.316500]
-Sat 13 Dec 2025 23:37:26 INFO  valid result: 
-precision@10 : 0.0567    precision@20 : 0.037    recall@10 : 0.5671    recall@20 : 0.7408    mrr@10 : 0.2397    mrr@20 : 0.2517    hit@10 : 0.5671    hit@20 : 0.7408    ndcg@10 : 0.3165    ndcg@20 : 0.3603
-Sat 13 Dec 2025 23:37:29 INFO  Saving current: saved\ItemKNN-Dec-13-2025_23-36-51.pth
-Sat 13 Dec 2025 23:37:29 INFO  Loading model structure and parameters from saved\ItemKNN-Dec-13-2025_23-36-51.pth
-Sat 13 Dec 2025 23:38:04 INFO  The running environment of this training is as follows:
+Mon 29 Dec 2025 13:17:03 INFO  FLOPs: 0.0
+Mon 29 Dec 2025 13:17:03 INFO  epoch 0 training [time: 0.14s, train loss: 0.0000]
+Mon 29 Dec 2025 13:17:03 INFO  epoch 0 evaluating [time: 0.60s, valid_score: 0.494300]
+Mon 29 Dec 2025 13:17:03 INFO  valid result: 
+precision@10 : 0.0765    precision@20 : 0.0446    recall@10 : 0.7655    recall@20 : 0.8913    mrr@10 : 0.4096    mrr@20 : 0.4187    hit@10 : 0.7655    hit@20 : 0.8913    ndcg@10 : 0.4943    ndcg@20 : 0.5265
+Mon 29 Dec 2025 13:17:04 INFO  Saving current: saved\ItemKNN-Dec-29-2025_13-17-03.pth
+Mon 29 Dec 2025 13:17:04 INFO  Loading model structure and parameters from saved\ItemKNN-Dec-29-2025_13-17-03.pth
+Mon 29 Dec 2025 13:17:05 INFO  The running environment of this training is as follows:
 +-------------+----------------+
 | Environment |     Usage      |
 +=============+================+
-| CPU         |     4.60 %     |
+| CPU         |     8.30 %     |
 +-------------+----------------+
-| GPU         | 0.04 G/8.00 G  |
+| GPU         | 0.02 G/8.00 G  |
 +-------------+----------------+
-| Memory      | 1.33 G/15.26 G |
+| Memory      | 0.93 G/15.26 G |
 +-------------+----------------+
-Sat 13 Dec 2025 23:38:04 INFO  best valid : OrderedDict([('precision@10', 0.0567), ('precision@20', 0.037), ('recall@10', 0.5671), ('recall@20', 0.7408), ('mrr@10', 0.2397), ('mrr@20', 0.2517), ('hit@10', 0.5671), ('hit@20', 0.7408), ('ndcg@10', 0.3165), ('ndcg@20', 0.3603)])
-Sat 13 Dec 2025 23:38:04 INFO  test result: OrderedDict([('precision@10', 0.0581), ('precision@20', 0.0376), ('recall@10', 0.5813), ('recall@20', 0.7515), ('mrr@10', 0.2559), ('mrr@20', 0.2676), ('hit@10', 0.5813), ('hit@20', 0.7515), ('ndcg@10', 0.3323), ('ndcg@20', 0.3752)])
+Mon 29 Dec 2025 13:17:05 INFO  best valid : OrderedDict([('precision@10', 0.0765), ('precision@20', 0.0446), ('recall@10', 0.7655), ('recall@20', 0.8913), ('mrr@10', 0.4096), ('mrr@20', 0.4187), ('hit@10', 0.7655), ('hit@20', 0.8913), ('ndcg@10', 0.4943), ('ndcg@20', 0.5265)])
+Mon 29 Dec 2025 13:17:05 INFO  test result: OrderedDict([('precision@10', 0.0788), ('precision@20', 0.0449), ('recall@10', 0.7878), ('recall@20', 0.8977), ('mrr@10', 0.408), ('mrr@20', 0.4155), ('hit@10', 0.7878), ('hit@20', 0.8977), ('ndcg@10', 0.498), ('ndcg@20', 0.5257)])

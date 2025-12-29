@@ -1,0 +1,52 @@
+{
+  "system": {
+    "os": "Windows",
+    "os_version": "10.0.26200",
+    "machine": "AMD64",
+    "python_version": "3.11.14 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 18:30:03) [MSC v.1929 64 bit (AMD64)]",
+    "python_executable": "c:\\Users\\marti\\miniconda3\\envs\\bp_cuda\\python.exe"
+  },
+  "cpu": {
+    "physical_cores": 8,
+    "logical_cores": 16
+  },
+  "memory": {
+    "total_GB": 16.39,
+    "available_GB": 6.4
+  },
+  "gpu": {
+    "cuda_available": true,
+    "cuda_version": "12.1",
+    "gpu_name": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+    "gpu_memory_GB": 8.59
+  },
+  "libraries": {
+    "recbole": "1.2.1",
+    "torch": "2.3.0+cu121",
+    "numpy": "1.26.4",
+    "scipy": "1.10.1"
+  },
+  "env_vars": {
+    "COMPUTERNAME": "PC",
+    "CONDA_DEFAULT_ENV": "bp_cuda",
+    "CONDA_EXE": "C:\\Users\\marti\\miniconda3\\Scripts\\conda.exe",
+    "CONDA_PREFIX": "C:\\Users\\marti\\miniconda3\\envs\\bp_cuda",
+    "CONDA_PROMPT_MODIFIER": "(bp_cuda) ",
+    "CONDA_PYTHON_EXE": "C:\\Users\\marti\\miniconda3\\python.exe",
+    "CONDA_ROOT": "C:\\Users\\marti\\miniconda3",
+    "CONDA_SHLVL": "1",
+    "PROMPT": "(bp_cuda) $P$G",
+    "PYDEVD_IPYTHON_COMPATIBLE_DEBUGGING": "1",
+    "PYTHONIOENCODING": "utf-8",
+    "PYTHONUNBUFFERED": "1",
+    "PYTHONUTF8": "1",
+    "PYTHON_FROZEN_MODULES": "on",
+    "_CONDA_EXE": "C:\\Users\\marti\\miniconda3\\Scripts\\conda.exe",
+    "_CONDA_OLD_CHCP": "850",
+    "_CONDA_ROOT": "C:\\Users\\marti\\miniconda3",
+    "__CONDA_OPENSSL_CERT_DIR_SET": "1",
+    "__CONDA_OPENSSL_CERT_FILE_SET": "1",
+    "CUDA_VISIBLE_DEVICES": "0",
+    "CUDA_MODULE_LOADING": "LAZY"
+  }
+}

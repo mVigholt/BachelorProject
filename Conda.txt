@@ -1,0 +1,21 @@
+conda create -n "my_environment" python=3.11	- create new env
+
+conda activate "my_environment"			- change to env
+
+pip install <missing-package>			- install package
+
+pip uninstall <package>				- uninstall package
+
+pip install -r requirements.txt			- install packages from requirements.txt
+
+pip freeze					- list of installed packacges in env
+
+conda env list					- list og env
+
+conda env remove -n "my_environment"		- delete env
+
+
+----------------------------------------------------------------------
+requirements.txt :
+dependency1==X.Y.Z
+dependency2==X.Y.Z
